@@ -2,7 +2,7 @@ import numpy as np
 import csv
 
 
-file = open("/home/jan/Documents/DAS/01DAS/data/article_archive.csv")
+file = open("article_archive.csv")
 csvreader = csv.reader(file)
 header = next(csvreader)
 print(header)

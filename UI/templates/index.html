@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 
 {% block head %}
+
 {% endblock %}
 
 {% block body %}
-<h1>Audiozprávy</h1>
-
+<div class= "content">
+    <h1 style="text-align: center">  Audiozprávy </h1>
+    <table>
+        <tr>
+            <th> <h3>Titulek </h3></th>    
+            <th> <h3>Shrnutí </h3></th>
+            <th> <h3>Zdroj </h3></th>      
+        </tr>
+        {% for a in zpravy %}
+        <tr>
+            <td>{{ a["title"] }}</td> 
+            <td>{{ a["summary"]}}</td>     
+            <td>{{ a["source"]}}</td>             
+        </tr>
+        {% endfor %}
+    </table>
+</div>    
 {% endblock %}
