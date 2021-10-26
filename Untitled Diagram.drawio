@@ -1,1 +1,68 @@
-<mxfile host="app.diagrams.net" modified="2021-10-26T12:24:06.153Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15" version="15.5.9" etag="MylzWwBoHvYOM_fJEvpR" type="github"><diagram id="Bohh69Xq2_j0CVOGEnTh">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-10-26T12:32:40.187Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15" etag="AV7HDqHrSTKIzg_sApcl" version="15.5.9" type="github">
+  <diagram id="Bohh69Xq2_j0CVOGEnTh" name="Page-1">
+    <mxGraphModel dx="1395" dy="906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-5" value="Server" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="160" y="360" width="540" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-1" target="QPUjetX2_2j8ZnOfCbwG-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-1" value="create model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="365" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-2" target="QPUjetX2_2j8ZnOfCbwG-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-2" target="QPUjetX2_2j8ZnOfCbwG-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-2" value="articles" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-3" target="QPUjetX2_2j8ZnOfCbwG-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="390" />
+              <mxPoint x="425" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-3" value="model (vectorized lemmatized articles)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="660" y="170" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-6" target="QPUjetX2_2j8ZnOfCbwG-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-6" value="Pick recent articles" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="200" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-8" target="QPUjetX2_2j8ZnOfCbwG-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-8" value="Deduplicate" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="365" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-13" target="QPUjetX2_2j8ZnOfCbwG-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-13" value="Send response" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="530" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-15" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="594" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="QPUjetX2_2j8ZnOfCbwG-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="624" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QPUjetX2_2j8ZnOfCbwG-16" value="UI" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/browser-128.png" vertex="1" parent="1">
+          <mxGeometry x="365" y="560" width="128" height="128" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
