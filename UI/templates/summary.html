@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class= "content">
+    <table> 
+        {% for zpravy in zpravy[1:10] %}
+        <tr>
+              <td> {{   zpravy.summary  }} </td> 
+        </tr>
+        {% endfor %}
+    </table>
+</div>    
+{% endblock %}
