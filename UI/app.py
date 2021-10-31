@@ -35,3 +35,11 @@ def index():
 
 if __name__ =="__main__":
     app.run(debug=True)
+
+@app.route('/summary.html')
+
+def summary():
+    zpravy = csv2dict('data/article_archive.csv')
+    return render_template('summary.html',
+        zpravy  = zpravy,
+    )

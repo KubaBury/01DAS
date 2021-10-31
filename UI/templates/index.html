@@ -5,19 +5,32 @@
 {% endblock %}
 
 {% block body %}
+<div class="uvod">
+    <h1 class="h1-uvod">  Audiozprávy </h1>
+    <h2 class="h2-uvod">  Využívejte svůj čas naplno </h1>
+    <div class="uvod-button-podpora"> <a href=""> <b>Podpořte nás</b> </a> </div>
+</div>   
+<div class="zalozky">
+    <table>
+        <tr> 
+            <th> Domu</th>
+            <th> Zpravy</th>
+            <th> Politika</th>
+            <th> Sport</th>
+        </tr>
+    </table>
+</div>
 <div class= "content">
-    <h1 style="text-align: center">  Audiozprávy </h1>
     <table>
         <tr>
-            <th> <h3>Titulek </h3></th>    
-            <th> <h3>Shrnutí </h3></th>
-            <th> <h3>Zdroj </h3></th>      
+            <th> <h2>Titulek </h2></th>    
         </tr>
-        {% for a in zpravy %}
-        <tr>
-            <td>{{ a["title"] }}</td> 
-            <td>{{ a["summary"]}}</td>     
-            <td>{{ a["source"]}}</td>             
+    </table>
+    <table>
+        {% for zpravy in zpravy[1:10] %}
+        <tr class="tr-index-summary">
+               <td class="td-index-summary"> <a href="summary.html">{{   zpravy.title  }} </td> </a>
+               <!--- <td> {{   zpravy.summary  }} </td> --->  
         </tr>
         {% endfor %}
     </table>
