@@ -60,7 +60,7 @@ class Todo(db.Model):
     def __repr__(self):
         return '<Task %r>' % self.id
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 
 def index():
     zpravy = vyber_zpravy()
@@ -72,7 +72,7 @@ def index():
 if __name__ =="__main__":
     app.run(debug=True)
 
-@app.route('/summary.html')
+@app.route('/summary.html', methods=['GET'])
 
 def summary():
     zpravy = vyber_zpravy()

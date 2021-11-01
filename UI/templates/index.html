@@ -8,20 +8,31 @@
 <div class="uvod">
     <h1 class="h1-uvod">  Audiozprávy </h1>
     <h2 class="h2-uvod">  Využívejte svůj čas naplno </h1>
-    <div class="uvod-button-podpora"> <a href=""> <b>Podpořte nás</b> </a> </div>
+    <div class="uvod-button-podpora"> <a href=""> <b> <span class="green">$</span> Podpořte nás <span class="green">$</span></b> </a> </div>
 </div>   
+
 <div class="zalozky">
-    <table>
-        <tr> 
-            <th> Domu</th>
-            <th> Zpravy</th>
-            <th> Politika</th>
-            <th> Sport</th>
+    <table class="zalozky-table">
+        <tr class="zalozky-table-tr">
+            <th class="zalozky-table-th"> <a href="/"> Nejnovější zprávy </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Domov</a> </th>
+            <th class="zalozky-table-th"> <a href=""> Zahraničí</a> </th>
+            <th class="zalozky-table-th"> <a href=""> Sport</a> </th>
+            <th class="zalozky-table-th"> <a href=""> Byznys </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Kultura </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Zdraví </a> </th>
+            <th class="zalozky-table-th"> <a href="">Cestování </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Relax </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Věda </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Auto </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Životní styl </a> </th>
+            <th class="zalozky-table-th"> <a href=""> Historie </a> </th>
         </tr>
     </table>
 </div>
+
 <div class= "content">
-    <table>
+    <table class="content-table">
         <tr>
             <th> <h2>Titulek </h2></th>    
         </tr>
@@ -29,7 +40,7 @@
     <table>
         {% for zpravy in zpravy[1:10] %}
         <tr class="tr-index-summary">
-               <td class="td-index-summary"> <a href="summary.html">{{   zpravy.title  }} </td> </a>
+               <td class="td-index-summary"> <a href="/">{{   zpravy.title  }} </td> </a>
                <!--- <td> {{   zpravy.summary  }} </td> --->  
         </tr>
         {% endfor %}
