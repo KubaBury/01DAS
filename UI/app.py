@@ -36,7 +36,7 @@ def vyber_zpravy():
     velikost = 0
     
     while velikost <= 14:
-        c = c = np.arange(300,315 + k)    
+        c = np.arange(300,315 + k)    
         articles=articles_all.iloc[c,[1,3]]    
         vla=vectorized_lemmatized_articles(articles,0,c.shape[0])
         ded=deduplicate(vla.run())
@@ -72,10 +72,3 @@ def index():
 if __name__ =="__main__":
     app.run(debug=True)
 
-@app.route('/summary.html', methods=['GET'])
-
-def summary():
-    zpravy = vyber_zpravy()
-    return render_template('summary.html',
-        zpravy  = zpravy,
-    )
