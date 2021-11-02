@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 
 def csv2dict():
     zpravy = []
-    with open('/home/jan/Documents/DAS/01DAS/data/article_archive.csv', encoding="utf8") as fh:
+    with open('C:/Users/vacla/OneDrive/Dokumenty/GitHub/01DASteam/data/article_archive.csv', encoding="utf8") as fh:
         rd = csv.DictReader(fh, delimiter=',')
         for row in rd:
             zpravy.append(row)
@@ -36,7 +36,7 @@ def vyber_zpravy():
     velikost = 0
     
     while velikost <= 14:
-        c = np.arange(300,315 + k)    
+        c = np.arange(0,15 + k)    
         articles=articles_all.iloc[c,[1,3]]    
         vla=vectorized_lemmatized_articles(articles,0,c.shape[0])
         ded=deduplicate(vla.run())
@@ -44,6 +44,8 @@ def vyber_zpravy():
         if len(b) != 0:
             bb = [x+300 for x in b]
             articles2 = articles.drop(bb)
+        else: 
+            articles2=articles
         
         velikost = articles2.shape[0]
         k = k + 1
