@@ -26,35 +26,37 @@ def csv2dict():
     
     return zpravy
 
-def vyber_zpravy():
 
-    zpravy = csv2dict()
-    articles_all = pd.DataFrame(zpravy)
+zpravy = csv2dict()
+articles_all = pd.DataFrame(zpravy)
+articles_sort = articles_all.sort_values(by=['published'], ascending=False)
+
+articles2 = []
+k = 0
+velikost = 0
+pocet = 10    
+kategorie = 'all'
+
+
+
+while velikost <= pocet-1:
+    if kategorie == 'all':
+        articles_kategorie = articles_sort
+    else:
+        articles_kategorie = articles_sort[articles_sort['category'] == kategorie]
     
-    #c=np.array([0,1,2,443,314,307,306,7,10])
-    #c = np.arange(0,10)
-    #c = np.arange(300,310)
-    #c = np.arange(0,10)
-    
-    #articles=articles_all.iloc[c,[1,3]]
-    
-    articles2 = []
-    k = 0
-    velikost = 0
-    
-    while velikost <= 14:
-        c = c = np.arange(300,315 + k)    
-        articles=articles_all.iloc[c,[1,3]]    
-        vla=vectorized_lemmatized_articles(articles,0,c.shape[0])
-        ded=deduplicate(vla.run())
-        b=ded.run()
-        if len(b) != 0:
-            bb = [x+300 for x in b]
-            articles2 = articles.drop(bb)
+    articles=articles_kategorie.iloc[:pocet+k,[1,3]]    
+    vla=vectorized_lemmatized_articles(articles,0,articles.shape[0])
+    ded=deduplicate(vla.run())
+    b=ded.run()
+    if len(b) != 0:
+        articles2 = articles.drop(articles.index[b])
+    else: 
+        articles2=articles
         
-        velikost = articles2.shape[0]
-        k = k + 1
+    velikost = articles2.shape[0]
+    k = k + 1
     
-    zpravy_vybrane = articles2.to_dict('records')
-    return zpravy_vybrane
+zpravy_vybrane = articles2.to_dict('records')
+
 
