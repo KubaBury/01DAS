@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for , redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pandas as pd
@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///zpravy.db'
 db = SQLAlchemy(app)
 
 def csv2dict():
-    file = open("/home/jan/Documents/DAS/01DAS/data/article_archive.csv")
+    file = open("D:/Education/University/DAS/01DAS/data/article_archive.csv", encoding="utf8")
     csvreader = csv.reader(file)
     header = next(csvreader)
     zpravy_csv = []
@@ -62,23 +62,40 @@ def vyber_zpravy(pocet, kategorie):
     zpravy_vybrane = articles2.to_dict('records')
     return zpravy_vybrane
 
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content=db.Column(db.String(200), nullable= False)
-    completed = db.Column(db.Integer, default=0)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+def vrat_summary(titulek):
+    zpravy = csv2dict()
+    articles_all = pd.DataFrame(zpravy)
+    zprava = articles_all[articles_all['title']==titulek]
+    return zprava['summary']
 
-    def __repr__(self):
-        return '<Task %r>' % self.id
 
 @app.route('/', methods=['GET'])
 
 def index():
-    zpravy = vyber_zpravy(10,'Sport')
-    
-    return render_template('index.html',
-        zpravy  = zpravy,
+    zpravy=vyber_zpravy(10,'all')
+    return render_template('index.html', zpravy=zpravy
     )
+
+
+@app.route('/<kategorie>', methods=['GET'])
+
+def category(kategorie):
+    zpravy = vyber_zpravy(10,kategorie=kategorie)
+        
+    return render_template('kategorie.html',
+        zpravy  = zpravy
+    )
+
+@app.route('/<title>', methods=['GET'])
+
+def summary(title):
+    summary = vrat_summary(title=title)
+    
+    return render_template('summary.html',
+        summary  = summary
+    )
+
+
 
 if __name__ =="__main__":
     app.run(debug=True)

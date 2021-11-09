@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block body %}
-<div class="uvod">
+
+        <p>Vítejte v audiozprávách. </p>
+        <p> Pro zobrazení 10ti zpráv dané kategorie překlikávejte v navigačním panelu.</p> 
+<!---<div class="uvod">
     <h1 class="h1-uvod">  Audiozprávy </h1>
     <h2 class="h2-uvod">  Využívejte svůj čas naplno </h1>
     <div class="uvod-button-podpora"> <a href=""> <b> <span class="green">$</span> Podpořte nás <span class="green">$</span></b> </a> </div>
@@ -41,9 +44,9 @@
         {% for zpravy in zpravy[1:10] %}
         <tr class="tr-index-summary">
                <td class="td-index-summary"> <a href="/">{{   zpravy.title  }} </td> </a>
-               <!--- <td> {{   zpravy.summary  }} </td> --->  
         </tr>
         {% endfor %}
     </table>
-</div>    
+</div>    --->
+
 {% endblock %}

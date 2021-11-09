@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">vvfv</div>
+      
+   
+    {% for zpravy in zpravy %}
+            <table class="table table-bordered table-hover">
+                 <tr>
+                    <th scope="col"> {{1}} </th> 
+                    <td> <a href="{{url_for('summary', title=zpravy.title )}}">{{ zpravy.title }} </a> <img src="{{zpravy.link}}"
+                        width=150" height="70"></td>
+                </tr>
+            </table>
+            
+    {%endfor%}
+
+{% endblock %}
