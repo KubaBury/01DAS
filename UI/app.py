@@ -80,7 +80,7 @@ def index():
 @app.route('/<kategorie>', methods=['GET'])
 
 def category(kategorie):
-    zpravy = vyber_zpravy(10,kategorie=kategorie)
+    zpravy = vyber_zpravy(9,kategorie=kategorie)
         
     return render_template('kategorie.html',
         zpravy  = zpravy
