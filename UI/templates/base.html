@@ -54,20 +54,18 @@
                     <a class="nav-link" href="/cestovani">Cestování <i class="bi bi-sunglasses"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/relax">Relax <i class="bi bi-battery-charging"></i></a>
+                    <a {% if page== 'Věda' %} class="nav-item nav-link active" {% else %} class="nav-link" {% endif %}
+                    href="{{url_for('category', kategorie='Věda')}}">Věda <i
+                        class="bi bi-mortarboard"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('category', kategorie='Věda')}}">Věda <i
-                            class="bi bi-mortarboard"></i></a>
+                    <a {% if page== 'Auto' %} class="nav-item nav-link active" {% else %} class="nav-link" {% endif %}
+                    href="{{url_for('category', kategorie='Auto')}}" >Auto <i class="bi bi-speedometer"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="auto">Auto <i class="bi bi-speedometer"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="lifestyle">Životní styl <i class="bi bi-basket"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="historie">Historie <i class="bi bi-bank"></i></a>
+                    <a {% if page== 'Životní styl' %} class="nav-item nav-link active" {% else %} class="nav-link" {%
+                    endif %} href="{{url_for('category', kategorie='Životní styl')}}" >Životní styl <i
+                        class="bi bi-basket"></i></a>
                 </li>
             </ul>
         </div>
@@ -88,6 +86,8 @@
 <script>
       $(document).ready(function () {
       $("#{{request.endpoint}}").parent().addClass("active"); })
+
+
 
 
 </script>
