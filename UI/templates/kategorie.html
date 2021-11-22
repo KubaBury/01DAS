@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% set active_page = "index" %}
-
 {% block head %}
 
 {% endblock %}
@@ -11,33 +9,33 @@
 
 <div class="container">
 
-  <div class="row">
-    {% for zpravy in zpravy %}
-    {% if loop.index0 % 3 == 0 %}
-    <div class="row" style="display: flex; justify-content: space-between">
-      {% endif %}
-      <div class="card" style="width: 23rem;">
-        <img
-          src="https://images.ctfassets.net/lzny33ho1g45/T5qqQQVznbZaNyxmHybDT/b76e0ff25a495e00647fa9fa6193a3c2/best-url-shorteners-00-hero.png"
-          class="card-img-top" alt="Image of the title">
-        <div class="card-body">
-          <p class="card-text">
-            <a href="{{url_for('summary', title=zpravy.title )}}" style="text-decoration: none; color: black;"> <b>{{
-                zpravy.title }} </b> 
-            </a>
-          </p>
+    <div class="row">
+        {% for zpravy in zpravy %}
+        {% if loop.index0 % 3 == 0 %}
+        <div class="row" style="display: flex; justify-content: space-between">
+            {% endif %}
+            <div class="card" style="width: 23rem;">
+                <img
+                        src="https://images.ctfassets.net/lzny33ho1g45/T5qqQQVznbZaNyxmHybDT/b76e0ff25a495e00647fa9fa6193a3c2/best-url-shorteners-00-hero.png"
+                        class="card-img-top" alt="Image of the title">
+                <div class="card-body">
+                    <p class="card-text">
+                        <a href="{{url_for('summary', title=zpravy.title )}}"
+                           style="text-decoration: none; color: black;"> <b>{{
+                            zpravy.title }} </b>
+                        </a>
+                    <p> {{ zpravy.summary[:180] }}... </p>
+                    <p style="text-align:right;"> {{ zpravy.source }} zdroj </p>
+                    </p>
+                </div>
+            </div>
+            {% if loop.index0 % 3 == 2 or loop.last %}
         </div>
-      </div>
-      {% if loop.index0 % 3 == 2 or loop.last %}
+        <div style="height:2rem" class="container-fluid"></div>
+        {% endif %}
+        {% endfor %}
     </div>
-    <div style="height:2rem" class="container-fluid"></div>
-    {% endif %}
-    {% endfor %}
-  </div>
 </div>
-
-
-
 
 
 {% endblock %}

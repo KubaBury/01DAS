@@ -6,7 +6,7 @@ import csv
 
 
 def csv2dict():
-    file = open("/home/jan/Documents/DAS/01DAS/data/article_archive.csv")
+    file = open("D:/Education/University/DAS/01DAS/data/article_archive.csv", encoding="utf-8")
     csvreader = csv.reader(file)
     header = next(csvreader)
     zpravy_csv = []
@@ -59,4 +59,4 @@ while velikost <= pocet-1:
     
 zpravy_vybrane = articles2.to_dict('records')
 
-
+print(zpravy_vybrane.category)
