@@ -48,7 +48,7 @@ class vectorized_lemmatized_articles:
         
         data=[]
         for i in range(ddd.shape[0]):
-            g=' '.join(ddd.iloc[i])
+            g=''.join(ddd.iloc[i])
             data.append(g)
         
         databaze=[]
@@ -66,8 +66,5 @@ class vectorized_lemmatized_articles:
             store=' '.join(databaze[index])
             dataset.append(store)
         
-        from sklearn.feature_extraction.text import CountVectorizer
-
-        vectorizer = CountVectorizer()
-        self.vektory=vectorizer.fit_transform(dataset)
+        self.vektory=dataset
         return self.vektory
