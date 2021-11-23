@@ -72,7 +72,7 @@ def vrat_summary(titulek):
 @app.route('/', methods=['GET'])
 
 def index():
-    zpravy=vyber_zpravy(10,'all')
+    zpravy=vyber_zpravy(9,'all')
     return render_template('index.html', zpravy=zpravy
     )
 
@@ -81,9 +81,9 @@ def index():
 
 def category(kategorie):
     zpravy = vyber_zpravy(9,kategorie=kategorie)
-        
     return render_template('kategorie.html',
-        zpravy  = zpravy
+        zpravy  = zpravy,
+        page = kategorie
     )
 
 @app.route('/<title>', methods=['GET'])
