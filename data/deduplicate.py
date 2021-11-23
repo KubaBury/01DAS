@@ -8,11 +8,10 @@ class deduplicate:
         self.indexy_duplikatu= None
         
     def run(self):
-        with open('fin_model.pickle', 'rb') as f:
-            fin_model = pickle.load(f)
+        clf = pickle.load(open('finmodel.sav', 'rb'))
         
 
-        vectorizer = TfidfVectorizer(ngram_range=(1,2))
+        vectorizer = TfidfVectorizer(ngram_range=(1,1))
         vectorizer.fit(self.vektory)
 
         x = vectorizer.transform(self.vektory)
@@ -24,7 +23,7 @@ class deduplicate:
                     break
                 else:
                     container=cosine_similarity(x[i],x[j])
-                    pred=fin_model.predict(container)
+                    pred=clf.predict(container)
                     if pred==1:
                         inds.append([i,j])       
         for i in range(len(inds)):
