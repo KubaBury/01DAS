@@ -10,6 +10,7 @@ articles=articles.loc[c,['title','summary']]
 #articles=articles[['title','summary']]
 
 vla=vectorized_lemmatized_articles(articles,0,articles.shape[0])
-ded=deduplicate(vla.run())
+a=vla.run()
+ded=deduplicate(a)
 b=ded.run()
 

@@ -49,7 +49,7 @@ class vectorized_lemmatized_articles:
                 
         data=[]
         for i in range(ddd.shape[0]):
-            g=''.join(ddd.iloc[i])
+            g=' '.join(ddd.iloc[i])
             data.append(g)
         
         databaze=[]
