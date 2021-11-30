@@ -1,11 +1,11 @@
 from flask import Flask, render_template, url_for , redirect
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 import pandas as pd
 import numpy as np
 import csv
 from vectorized_lemmatized_articles import vectorized_lemmatized_articles
 from deduplicate import deduplicate
+from cachetools import cached, LRUCache, TTLCache
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///zpravy.db'
@@ -32,7 +32,7 @@ def csv2dict():
     
     return zpravy
 
-
+@cached(cache=TTLCache(maxsize=1024, ttl=600))
 def vyber_zpravy(pocet, kategorie):
     zpravy = csv2dict()
     articles_all = pd.DataFrame(zpravy)
@@ -70,7 +70,7 @@ def vrat_summary(titulek):
 
 
 @app.route('/', methods=['GET'])
-
+@cached(cache=TTLCache(maxsize=1024, ttl=600))
 def index():
     zpravy=vyber_zpravy(9,'all')
     return render_template('index.html', zpravy=zpravy
@@ -78,7 +78,7 @@ def index():
 
 
 @app.route('/<kategorie>', methods=['GET'])
-
+@cached(cache=TTLCache(maxsize=1024, ttl=600))
 def category(kategorie):
     zpravy = vyber_zpravy(9,kategorie=kategorie)
     return render_template('kategorie.html',
@@ -90,11 +90,10 @@ def category(kategorie):
 
 def summary(title):
     summary = vrat_summary(title=title)
-    
+
     return render_template('summary.html',
         summary  = summary
     )
-
 
 
 if __name__ =="__main__":
