@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
+<title> Hlavní stránka </title>
 {% endblock %}
 
 {% block body %}
 <div class="container">
     <p>
-    <h1>Vítejte v audiozprávách.</h1> </p>
+    <h1>Vítejte v audiozprávách {% if current_user.is_authenticated %}
+        {{ current_user.username }}! {% else %} .
+        {% endif %}</h1>
+    </p>
     <p> Pro zobrazení 9-ti zpráv dané kategorie překlikávejte v navigačním panelu.</p>
+    <p> Přihlášení či registraci usera naleznete v profilu.</p>
 </div>
 
 <div style="height:2rem" class="container-fluid"></div> <!-- space below the navbar -->
 
 <div class="container">
-
     <div class="row">
         {% for zpravy in zpravy %}
         {% if loop.index0 % 3 == 0 %}
@@ -32,6 +35,9 @@
                         </a>
                     <p> {{ zpravy.summary[:180] }}... </p>
                     <p style="text-align:right;"> {{ zpravy.source }} zdroj </p>
+                    <p>
+                        <button type="button" class="btn btn-outline-primary">Like</button>
+                    </p>
                     </p>
                 </div>
             </div>
@@ -43,45 +49,5 @@
     </div>
 </div>
 
-<!---<div class="uvod">
-    <h1 class="h1-uvod">  Audiozprávy </h1>
-    <h2 class="h2-uvod">  Využívejte svůj čas naplno </h1>
-    <div class="uvod-button-podpora"> <a href=""> <b> <span class="green">$</span> Podpořte nás <span class="green">$</span></b> </a> </div>
-</div>   
-
-<div class="zalozky">
-    <table class="zalozky-table">
-        <tr class="zalozky-table-tr">
-            <th class="zalozky-table-th"> <a href="/"> Nejnovější zprávy </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Domov</a> </th>
-            <th class="zalozky-table-th"> <a href=""> Zahraničí</a> </th>
-            <th class="zalozky-table-th"> <a href=""> Sport</a> </th>
-            <th class="zalozky-table-th"> <a href=""> Byznys </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Kultura </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Zdraví </a> </th>
-            <th class="zalozky-table-th"> <a href="">Cestování </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Relax </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Věda </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Auto </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Životní styl </a> </th>
-            <th class="zalozky-table-th"> <a href=""> Historie </a> </th>
-        </tr>
-    </table>
-</div>
-
-<div class= "content">
-    <table class="content-table">
-        <tr>
-            <th> <h2>Titulek </h2></th>    
-        </tr>
-    </table>
-    <table>
-        {% for zpravy in zpravy[1:10] %}
-        <tr class="tr-index-summary">
-               <td class="td-index-summary"> <a href="/">{{   zpravy.title  }} </td> </a>
-        </tr>
-        {% endfor %}
-    </table>
-</div>    --->
 
 {% endblock %}

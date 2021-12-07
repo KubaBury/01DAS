@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>{{page}}</title>
+<title> Hlavní stránka </title>
 {% endblock %}
 
 {% block body %}
+<div class="container">
+    <p>
+    <h1>Vítejte v audiozprávách {{ name }}.</h1>
+    </p>
+    <p> Pro zobrazení 9-ti zpráv dané kategorie překlikávejte v navigačním panelu.</p>
+    <p> Přihlášení či registraci usera naleznete v profilu.</p>
+</div>
+
 <div style="height:2rem" class="container-fluid"></div> <!-- space below the navbar -->
 
 <div class="container">
-
     <div class="row">
         {% for zpravy in zpravy %}
         {% if loop.index0 % 3 == 0 %}
@@ -26,12 +33,7 @@
                         </a>
                     <p> {{ zpravy.summary[:180] }}... </p>
                     <p style="text-align:right;"> {{ zpravy.source }} zdroj </p>
-                    {% if current_user.is_authenticated %}
-                    <p>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
-                    </p>
-                    {% endif %}
-
+                    <p> <button type="button" class="btn btn-outline-primary">Like</button></p>
                     </p>
                 </div>
             </div>
