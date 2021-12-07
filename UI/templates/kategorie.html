@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
+<title>{{page}}</title>
 {% endblock %}
 
 {% block body %}
@@ -26,6 +26,12 @@
                         </a>
                     <p> {{ zpravy.summary[:180] }}... </p>
                     <p style="text-align:right;"> {{ zpravy.source }} zdroj </p>
+                    {% if current_user.is_authenticated %}
+                    <p>
+                        <button type="button" class="btn btn-outline-primary">Like</button>
+                    </p>
+                    {% endif %}
+
                     </p>
                 </div>
             </div>
