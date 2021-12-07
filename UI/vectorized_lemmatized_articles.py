@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd 
-from corpy.morphodita import Tokenizer
+
 
 
 class vectorized_lemmatized_articles:
@@ -14,7 +14,7 @@ class vectorized_lemmatized_articles:
         
         from corpy.morphodita import Tokenizer
         tokenizer = Tokenizer("czech")
-        punc='[]{}()"„“!@#$%^=_&*-:/,.\''
+        punc='[]{}()"„“!@#$%^=_&*-:/,.\`~;^*,<>|°'
         def tokeny(clanek):
             cont=[]
             for word in tokenizer.tokenize(clanek):
@@ -42,10 +42,11 @@ class vectorized_lemmatized_articles:
     
         #articles=articles[['title','summary']]
     
-        ddd=self.clanky[self.startind:self.endind]
-        for type in ddd.columns:
-            ddd[type]=ddd[type].astype(str)
+        ddd=self.clanky.iloc[self.startind:self.endind]
+        # for type in ddd.columns:
+        #     ddd[type]=ddd[type].astype(str)
         
+                
         data=[]
         for i in range(ddd.shape[0]):
             g=' '.join(ddd.iloc[i])
@@ -58,7 +59,14 @@ class vectorized_lemmatized_articles:
             d=delete_stopwords(d)
             e=[]
             for slovo in d:
-                e.append(lemmatizer(slovo))
+                k=lemmatizer(slovo)
+                if k.find('-')!=-1:
+                    e.append(k[0:k.find('-')])
+                elif k.find('_')!=-1:
+                    e.append(k[0:k.find('_')])
+                else:
+                    e.append(k)
+            e=delete_stopwords(e)
             databaze.append(e)
             
         dataset=[]   ###dataset je ve tvaru co potřebuje CountVectorizer
@@ -66,8 +74,5 @@ class vectorized_lemmatized_articles:
             store=' '.join(databaze[index])
             dataset.append(store)
         
-        from sklearn.feature_extraction.text import CountVectorizer
-
-        vectorizer = CountVectorizer()
-        self.vektory=vectorizer.fit_transform(dataset)
+        self.vektory=dataset
         return self.vektory
