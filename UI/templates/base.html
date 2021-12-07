@@ -25,12 +25,12 @@
                     Profil
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                   {% if current_user.is_authenticated %}
-        <li><a class="dropdown-item" href="{{url_for('logout')}}">Odhlásit se</li>
+                    {% if current_user.is_authenticated %}
+                    <li><a class="dropdown-item" href="{{url_for('logout')}}">Odhlásit se</li>
                     </a>
                     {% else%}
                     <li><a class="dropdown-item" href="{{url_for('login')}}">Přihlásit se</li>
-        {% endif %}
+                    {% endif %}
 
                     <li><a class="dropdown-item" href="{{url_for('register')}}">Registrace</a></li>
                 </ul>
@@ -100,6 +100,18 @@
                 </li>
             </ul>
         </div>
+        {% if current_user.is_authenticated %}
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-4 mb-lg-0"
+            >
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Přihlášen: {{ current_user.username }}
+                </a>
+            </li>
+            </ul>
+        </div>
+        {%endif%}
     </div>
 </nav>
 {% block body %}
