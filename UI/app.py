@@ -11,6 +11,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+from persona import persona
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -112,6 +113,23 @@ def vyber_zpravy(pocet, kategorie):
 
     zpravy_vybrane = articles_all.iloc[ind_pom].to_dict('records')
     return zpravy_vybrane
+
+def personalizovane_zpravy(jmeno_uzivatele):
+    zpravy = csv2dict()
+    zpravy_all = pd.DataFrame(zpravy)
+    jmeno = jmeno_uzivatele
+    seznam = pd.read_csv("../data/likes.csv")
+    kliknute_indexy = seznam.loc[seznam['user'] == jmeno]['zprava_id'].to_numpy()
+    if len(kliknute_indexy)<5:
+        return 'klikni alespoň na 5 článků!'
+    else:
+        vybrane_indexy_mod = persona(zpravy_all,kliknute_indexy)
+        vybrane_indexy = vybrane_indexy_mod.run()
+        
+        zpravy_vybrane = zpravy_all.iloc[vybrane_indexy].to_dict('records')
+        
+        return zpravy_vybrane
+
 
 @app.route('/', methods=['GET'])
 @cached(cache=TTLCache(maxsize=1024, ttl=1))
