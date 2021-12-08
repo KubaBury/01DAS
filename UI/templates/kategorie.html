@@ -20,18 +20,17 @@
                         class="card-img-top" alt="Image of the title">
                 <div class="card-body">
                     <p class="card-text">
-                        <a href="{{url_for('summary', title=zpravy.title )}}"
+                        <a href=""
                            style="text-decoration: none; color: black;"> <b>{{
                             zpravy.title }} </b>
                         </a>
                     <p> {{ zpravy.summary[:180] }}... </p>
-                    <p style="text-align:right;"> {{ zpravy.source }} zdroj </p>
+                    <p style="text-align:right;"> <a href="https://www.{{zpravy.source}}" class="link-primary">{{ zpravy.source }}</a>  </p>
                     {% if current_user.is_authenticated %}
                     <p>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
+                        <a class="btn btn-outline-primary" href="{{url_for('like', name=current_user.username, id=zpravy.id) }}" role="button">Like</a>
                     </p>
                     {% endif %}
-
                     </p>
                 </div>
             </div>

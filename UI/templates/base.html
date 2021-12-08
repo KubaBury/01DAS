@@ -21,18 +21,18 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false">
+                   data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i>
                     Profil
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     {% if current_user.is_authenticated %}
-                    <li><a class="dropdown-item" href="{{url_for('logout')}}">Odhlásit se</li>
-                    </a>
+                    <li><a class="dropdown-item" href="{{url_for('logout')}}">Odhlásit se</a></li>
                     {% else%}
-                    <li><a class="dropdown-item" href="{{url_for('login')}}">Přihlásit se</li>
+                    <li><a class="dropdown-item" href="{{url_for('login')}}">Přihlásit se</a></li>
                     {% endif %}
-
+                    {% if not current_user.is_authenticated %}
                     <li><a class="dropdown-item" href="{{url_for('register')}}">Registrace</a></li>
+                    {% endif %}
                 </ul>
             </li>
         </ul>
@@ -104,11 +104,11 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-4 mb-lg-0"
             >
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Přihlášen: {{ current_user.username }}
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Přihlášen: {{ current_user.username }}
+                    </a>
+                </li>
             </ul>
         </div>
         {%endif%}
