@@ -38,10 +38,10 @@
                             zpravy.title }} </b>
                         </a>
                     <p> {{ zpravy.summary[:180] }}... </p>
-                    <p style="text-align:right;"> {{ zpravy.source }} zdroj </p>
+                    <p style="text-align:right;"> {{ zpravy.source }} </p>
                     {% if current_user.is_authenticated %}
                     <p>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
+                        <a class="btn btn-outline-primary" href="{{url_for('like', name=current_user.username, id=zpravy.id) }}" role="button">Like</a>
                     </p>
                     {% endif %}
                 </div>
