@@ -62,7 +62,7 @@ class LoginForm(FlaskForm):
 
 
 def csv2dict():
-    file = open("../data/article_archive.csv", encoding='utf8')
+    file = open("../data/article_archive_all_9_12_10am_cat.csv", encoding='utf8')
     csvreader = csv.reader(file)
     header = next(csvreader)
     zpravy_csv = []
@@ -73,12 +73,12 @@ def csv2dict():
     pom = zpravy_csv[0]
 
     zpravy = [
-        {'id': 0, header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7], header[8]: pom[8]}
+        {'id': 0, header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7]}
             ]
 
     for i in range(1,np.size(zpravy_csv,0)):
         pom = zpravy_csv[i]
-        zpravy.append({'id': i, header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7], header[8]: pom[8]})
+        zpravy.append({'id': i, header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7]})
 
     return zpravy
 
@@ -153,8 +153,8 @@ def summary(title):
     summary = vrat_summary(title=title)
 
     return render_template('summary.html',
-                           summary=summary
-                           )
+                            summary=summary
+                            )
 
 
 @app.route('/login', methods=['GET', 'POST'])
