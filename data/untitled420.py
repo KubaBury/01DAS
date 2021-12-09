@@ -2,33 +2,32 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import pandas as pd 
 from corpy.morphodita import Tokenizer
-import csv
 from deduplicate import deduplicate
 from vectorized_lemmatized_articles import vectorized_lemmatized_articles
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 from time import time
 import matplotlib.pyplot as plt
 
-def csv2dict():
-    file = open("article_archive_all_9_12_10am.csv", encoding="utf8")
-    csvreader = csv.reader(file)
-    header = next(csvreader)
-    zpravy_csv = []
-    for row in csvreader:
-        zpravy_csv.append(row)
-    file.close()
+# def csv2dict():
+#     file = open("article_archive_all_9_12_10am.csv", encoding="utf8")
+#     csvreader = csv.reader(file)
+#     header = next(csvreader)
+#     zpravy_csv = []
+#     for row in csvreader:
+#         zpravy_csv.append(row)
+#     file.close()
 
-    pom = zpravy_csv[0]   
+#     pom = zpravy_csv[0]   
 
-    zpravy = [
-        {'id': pom[0], header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7], header[8]: pom[8]}
-            ]   
+#     zpravy = [
+#         {'id': pom[0], header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7], header[8]: pom[8]}
+#             ]   
 
-    for i in range(1,np.size(zpravy_csv,0)):
-        pom = zpravy_csv[i]
-        zpravy.append({'id': pom[0], header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7], header[8]: pom[8]})
+#     for i in range(1,np.size(zpravy_csv,0)):
+#         pom = zpravy_csv[i]
+#         zpravy.append({'id': pom[0], header[1]:  pom[1], header[2]: pom[2], header[3]: pom[3], header[4]: pom[4], header[5]: pom[5], header[6]: pom[6], header[7]: pom[7], header[8]: pom[8]})
     
-    return zpravy
+#     return zpravy
 
 def plot_top_words(model, feature_names, n_top_words, title):
     fig, axes = plt.subplots(2, 5, figsize=(30, 15), sharex=True)
@@ -51,10 +50,11 @@ def plot_top_words(model, feature_names, n_top_words, title):
     plt.show()
 
 
-zpravy = csv2dict()
-articles = pd.DataFrame(zpravy)
+# zpravy = csv2dict()
+# articles = pd.DataFrame(zpravy)
 
-articles=articles[['title','summary']]
+df=pd.read_csv ('article_archive_all_9_12_10am.csv')
+articles=df[['title','summary']]
 
 # vla=vectorized_lemmatized_articles(articles,0,articles.shape[0])
 # a=vla.run()
