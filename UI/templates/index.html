@@ -13,10 +13,11 @@
     <p> Pro zobrazení 9-ti zpráv dané kategorie překlikávejte v navigačním panelu.</p>
     <p> Přihlášení či registraci usera naleznete v profilu.</p>
     {% if current_user.is_authenticated %}
-    <p> Vážený uživateli, máte k dispozici tlačítko
-        <button type="button" class="btn btn-outline-primary">Like</button>
-        u jednotlivých příspěvků.
-        {% endif %}
+    <p> Vážený uživateli,  tlačítko
+        <button type="button" class="btn btn-outline-primary">Like</button> u jednotlivých příspěvků máte nyní k dispozici.
+    <p>Po lajknutí alespoň 5ti příspěvků se v záložce <b>Můj výběr <i class="bi bi-person-check"></i></b> odemkne výběr zpráv vytvořená na míru přímo pro Vás.</p>
+    {% endif %}
+
 </div>
 
 <div style="height:2rem" class="container-fluid"></div> <!-- space below the navbar -->
@@ -33,15 +34,17 @@
                         class="card-img-top" alt="Image of the title">
                 <div class="card-body">
                     <p class="card-text">
-                        <a href="{{url_for('summary', title=zpravy.title )}}"
+                        <a href=""
                            style="text-decoration: none; color: black;"> <b>{{
                             zpravy.title }} </b>
                         </a>
                     <p> {{ zpravy.summary[:180] }}... </p>
-                    <p style="text-align:right;"> {{ zpravy.source }} </p>
+                    <p style="text-align:right;"><a href="https://www.{{zpravy.source}}" class="link-primary">{{
+                        zpravy.source }}</a></p>
                     {% if current_user.is_authenticated %}
                     <p>
-                        <a class="btn btn-outline-primary" href="{{url_for('like', name=current_user.username, id=zpravy.id) }}" role="button">Like</a>
+                        <a class="btn btn-outline-primary"
+                           href="{{url_for('like', name=current_user.username, id=zpravy.id) }}" role="button">Like</a>
                     </p>
                     {% endif %}
                 </div>

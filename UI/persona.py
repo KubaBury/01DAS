@@ -49,11 +49,11 @@ class persona:
         articles_50=self.clanky.loc[index_50]
         articles_50.sort_values(by=['published'])
         rec_ind_50=articles_50[-3:].index
-        index_10 = np.where(cos10!=0)
-        articles_10=self.clanky.loc[index_10]
-        articles_10.sort_values(by=['published'])
-        rec_ind_10=articles_10[-1:].index
+        #index_10 = np.where(cos10!=0)
+        #articles_10=self.clanky.loc[index_10]
+        #articles_10.sort_values(by=['published'])
+        #rec_ind_10=articles_10[-1:].index
 
-        self.rec_ind=np.concatenate((rec_ind_90,rec_ind_70,rec_ind_50,rec_ind_10))
+        self.rec_ind=np.concatenate((rec_ind_90,rec_ind_70,rec_ind_50))
 
         return self.rec_ind

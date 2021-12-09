@@ -49,8 +49,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a {% if page== 'Zprávy z domova' %} class="nav-item nav-link active" {% else %}
-                    class="nav-link" {% endif %}" href="{{url_for('category', kategorie='Zprávy z domova')}}">Domov
+                    <a {% if page== 'Domov' %} class="nav-item nav-link active" {% else %}
+                    class="nav-link" {% endif %}" href="{{url_for('category', kategorie='Domov')}}">Domov
                     <i class="bi bi-house"></i></a>
                 </li>
                 <li class="nav-item active">
@@ -64,8 +64,8 @@
                         class="bi bi-bicycle"></i> </a>
                 </li>
                 <li class="nav-item">
-                    <a {% if page== 'Byznys zprávy' %} class="nav-item nav-link active" {% else %} class="nav-link" {%
-                    endif %} href="{{url_for('category', kategorie='Byznys zprávy')}}"> Ekonomika <i
+                    <a {% if page== 'Ekonomika' %} class="nav-item nav-link active" {% else %} class="nav-link" {%
+                    endif %} href="{{url_for('category', kategorie='Ekonomika')}}"> Ekonomika <i
                         class="bi bi-piggy-bank"></i></a>
                 </li>
                 <li class="nav-item">
@@ -98,6 +98,14 @@
                     endif %} href="{{url_for('category', kategorie='Životní styl')}}" >Životní styl <i
                         class="bi bi-basket"></i></a>
                 </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a {% if page== current_user.username %} class="nav-item nav-link active" {% else %} class="nav-link" {%
+                    endif %}
+                       href="{{url_for('personalized', name=current_user.username)}}"> Můj výběr <i
+                            class="bi bi-person-check"></i></a>
+                </li>
+                {%endif%}
             </ul>
         </div>
         {% if current_user.is_authenticated %}
@@ -106,7 +114,8 @@
             >
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Přihlášen: {{ current_user.username }}
+                        Přihlášen:
+                            <b>{{ current_user.username }} </b>
                     </a>
                 </li>
             </ul>
