@@ -1,7 +1,11 @@
 import pandas as pd
 import numpy as np
-
+import csv
 df=pd.read_csv ('article_archive_all_9_12_10am.csv')
+
+
+
+
 for i in range(df.shape[0]):
     if df.iloc[i,5]=='Životní styl a společnost':
         df.iloc[i,5]='Životní styl'
@@ -77,9 +81,16 @@ for i in range(df.shape[0]):
         df.iloc[i,5]='Cestování'
     elif df.iloc[i,5]=='Sport - Motorsport':
         df.iloc[i,5]='Sport'
-    else:
-        df.iloc[i,5]='mix'
-df.insert(0,'',np.linspace(0,581,582))
+    elif df.iloc[i,5]=='Budějovice - Budějovice - zprávy':
+        df.iloc[i,5]='Domov'
+    elif df.iloc[i,5]=='Olomouc - Olomouc - zprávy':
+        df.iloc[i,5]='Domov'
+    elif df.iloc[i,5]=='Sport - Lyžování':
+        df.iloc[i,5]='Sport'
+    elif df.iloc[i,5]=='Auto - Zpravodajství':
+        df.iloc[i,5]='Auto'
+
+#df.insert(0,'',np.linspace(0,581,582))
 df.to_csv('article_archive_all_9_12_10am_cat.csv',index=False, header=df.columns, mode='a')
 
 # Domov
