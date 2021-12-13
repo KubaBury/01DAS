@@ -25,10 +25,19 @@
                             zpravy.title }} </b>
                         </a>
                     <p> {{ zpravy.summary[:180] }}... </p>
-                    <p style="text-align:right;"> <a href="https://www.{{zpravy.source}}" class="link-primary">{{ zpravy.source }}</a>  </p>
+                    <p style="text-align:right;"><a href="https://www.{{zpravy.source}}" class="link-primary">{{
+                        zpravy.source }}</a></p>
                     {% if current_user.is_authenticated %}
                     <p>
-                        <a class="btn btn-outline-primary" href="{{url_for('like', name=current_user.username, id=zpravy.id) }}" role="button">Like</a>
+                        <button
+                                class="btn btn-outline-primary"
+                                id="{{ zpravy.id }}"
+                                role="button"
+                        >Like
+                        </button>
+
+                        <!---<a class="btn btn-outline-primary"
+                           href="{{url_for('like', name=current_user.username, id=zpravy.id) }}" role="button">Like</a>--->
                     </p>
                     {% endif %}
                     </p>
@@ -42,5 +51,34 @@
     </div>
 </div>
 
+
+<!-- Script -->
+<script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+<script type="text/javascript">
+
+$('#zpravy.id').on('click', function(e) {
+  // Stop the browser from doing anyth ing else
+  e.preventDefault();
+  // Do an AJAX post
+  $.ajax({
+    type: "POST",
+    url: "",
+    data: {
+      _id: 1 // send the data abotu like here
+    },
+
+    success: function(data) {
+      // POST was successful - do something with the response
+      alert('Server sent back: ' + data);
+    },
+
+    error: function(data) {
+      // Server error, e.g. 404, 500, error
+      $(".btn").addClass("active");
+      alert("sending post request failed but we don't care cause it proved we can send POST request without refresh and we can update color of the button");
+    }
+  });
+});
+</script>
 
 {% endblock %}
