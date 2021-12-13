@@ -64,7 +64,7 @@ class LoginForm(FlaskForm):
 
 
 def csv2dict():
-    file = open("../data/article_archive_allnew_cat.csv", encoding='utf8')
+    file = open("../data/article_archive_allnew_cat_time.csv", encoding='utf8')
     csvreader = csv.reader(file)
     header = next(csvreader)
     zpravy_csv = []

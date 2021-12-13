@@ -41,6 +41,7 @@
                     <p> {{ zpravy.summary[:180] }}... </p>
                     <p style="text-align:right;"><a href="https://www.{{zpravy.source}}" class="link-primary">{{
                         zpravy.source }}</a></p>
+                    <p> {{ zpravy.published }} </p>
                     {% if current_user.is_authenticated %}
                     <p>
                         <a class="btn btn-outline-primary"
