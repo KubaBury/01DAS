@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import csv
-df=pd.read_csv ('article_archive_all_9_12_10am.csv')
+df=pd.read_csv ('article_archive_idnes14_12.csv')
 
 
 
@@ -91,7 +91,7 @@ for i in range(df.shape[0]):
         df.iloc[i,5]='Auto'
 
 #df.insert(0,'',np.linspace(0,581,582))
-df.to_csv('article_archive_all_9_12_10am_cat.csv',index=False, header=df.columns, mode='a')
+df.to_csv('article_archive_idnes14_12_cat.csv',index=False, header=df.columns, mode='a')
 
 # Domov
 # Svět
